@@ -1,0 +1,20 @@
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+const itemSchema = new Schema({
+    imagePath: { type: String, required: true },
+    category: { type: String, required: true },
+    title: { type: String, required: true },
+    description: { type: String, required: true },
+    sizesAndColors: [{
+        color: { type: String, required: true },
+        variations: [{
+            size: { type: String, required: true },
+            quantity: { type: Number, required: true }
+        }]
+    }],
+    price: { type: Number, required: true },
+    quantity: { type: Number, required: true },
+}, { timestamps: true });
+
+module.exports = mongoose.model('Items', itemSchema);
